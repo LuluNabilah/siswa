@@ -34,9 +34,8 @@
 				</div>
 
 				<div class="brand">
-					<a href="index.html">SISWAKU</a>
+					<a href="#">SISWAKU</a>
 				</div>
-				
 				
 				<div id="navbar-menu">
 					<ul class="nav navbar-nav navbar-right">
@@ -87,7 +86,7 @@
 									<div class="profile-stat">
 										<div class="row">
 											<div class="col-md-4 stat-item">
-												45 <span>Projects</span>
+												45 <span>Mata Pelajaran</span>
 											</div>
 											<div class="col-md-4 stat-item">
 												15 <span>Awards</span>
@@ -102,56 +101,28 @@
 								<!-- PROFILE DETAIL -->
 								<div class="profile-detail">
 									<div class="profile-info">
-										<h4 class="heading">Data Diri</h4>
-										<ul class="list-unstyled list-justify">
-											<li>Jenis Kelamin <span>L</span></li>
-											<li>Agama <span>Islam</span></li>
-											<li>Alamat <span>Mrebet</span></li>
-										</ul>
+										<h2>Profile Information</h2>
+										<div class="profile-details">
+											<p><strong>Nama Depan:</strong> </p>
+											<p><strong>Nama Belakang:</strong></p>
+											<p><strong>Email:</strong> </p>
+											<p><strong>Telepon:</strong></p>
+											<p><strong>Tanggal Lahir:</strong></p>
+										</div>
+										<div class="profile-actions">
+											<a href="#" class="btn btn-primary">Edit Profile</a>
+											<form action="#" method="POST" style="display:inline;">
+												@csrf
+												@method('DELETE')
+												<button type="submit" class="btn btn-danger">Delete Profile</button>
+											</form>
+										</div>
 									</div>
 									<div class="text-center"><a href="/profile{id}/edit" class="btn btn-primary">Edit Profile</a></div>
 								</div>
 								<!-- END PROFILE DETAIL -->
 							</div>
 							<!-- END LEFT COLUMN -->
-							<!-- RIGHT COLUMN -->
-							<div class="profile-right">
-								<h4 class="heading">Samuel's Awards</h4>
-								
-								<!-- TABBED CONTENT -->
-								<div class="custom-tabs-line tabs-line-bottom left-aligned">
-									<ul class="nav" role="tablist">
-										<li class="active"><a href="#tab-bottom-left1" role="tab" data-toggle="tab">Recent Activity</a></li>
-										
-									</ul>
-								</div>
-								<div class="tab-content">
-									<div class="tab-pane fade in active" id="tab-bottom-left1">
-										<ul class="list-unstyled activity-timeline">
-											<li>
-												<i class="fa fa-comment activity-icon"></i>
-												<p>Commented on post <a href="#">Prototyping</a> <span class="timestamp">2 minutes ago</span></p>
-											</li>
-											<li>
-												<i class="fa fa-cloud-upload activity-icon"></i>
-												<p>Uploaded new file <a href="#">Proposal.docx</a> to project <a href="#">New Year Campaign</a> <span class="timestamp">7 hours ago</span></p>
-											</li>
-											<li>
-												<i class="fa fa-plus activity-icon"></i>
-												<p>Added <a href="#">Martin</a> and <a href="#">3 others colleagues</a> to project repository <span class="timestamp">Yesterday</span></p>
-											</li>
-											<li>
-												<i class="fa fa-check activity-icon"></i>
-												<p>Finished 80% of all <a href="#">assigned tasks</a> <span class="timestamp">1 day ago</span></p>
-											</li>
-										</ul>
-										<div class="margin-top-30 text-center"><a href="#" class="btn btn-default">See all activity</a></div>
-									</div>
-									
-								</div>
-								<!-- END TABBED CONTENT -->
-							</div>
-							<!-- END RIGHT COLUMN -->
 						</div>
 					</div>
 				</div>
@@ -162,7 +133,7 @@
 		<div class="clearfix"></div>
 		<footer>
 			<div class="container-fluid">
-				<p class="copyright">&copy; 2017 <a href="https://www.themeineed.com" target="_blank">Theme I Need</a>. All Rights Reserved.</p>
+				<p class="copyright">&copy; 2024 <a href="https://www.themeineed.com" target="_blank">Theme I Need</a>. All Rights Reserved.</p>
 			</div>
 		</footer>
 	</div>

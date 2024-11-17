@@ -1,5 +1,4 @@
-@extends('layouts.master')
-@section('content')
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,7 +7,7 @@
 </head>
 <body>
     <div class="container mt-5">
-        <h1 class="mb-4">Daftar Siswa</h1>
+        <h1 class="mb-4">Tambah Siswa</h1>
         <a href="#" class="btn btn-primary mb-3">Tambah Siswa</a>
         
         @if($siswa->isEmpty())
@@ -32,11 +31,11 @@
                             <td>{{ $s->jenis_kelamin }}</td>
                             <td>{{ $s->agama }}</td>
                             <td>
-                                <a href="/edit{id}/siswa" class="btn btn-warning btn-sm">Edit</a>
-                                <form action="#" method="POST" style="display:inline;">
+                                <a href="/siswa/{id}/edit" class="btn btn-warning btn-sm">Edit</a>
+                                <form action="/siswa/{id}" method="POST" onsubmit="return confirm('Are you sure you want to delete this siswa?');">
                                     @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-danger btn-sm">Hapus</button>
+                                    @method('DELETE') <!-- Specify that this is a DELETE request -->
+                                    <button type="submit" class="btn btn-danger">Delete</button>
                                 </form>
                             </td>
                         </tr>
@@ -45,5 +44,32 @@
             </table>
         @endif
     </div>
+    <form action="" id="form-delete" method="POST">
+        @csrf
+        @method('DELETE')
+     </form>
 </body>
-@endsection
+
+
+@push('scripts')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+
+<script type="text/javascript">
+    function handleDestroy(url) {
+        swal({
+            title: "Apakah anda yakin?",
+            text: "Setelah dihapus, Anda tidak dapat mengembalikannya!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+        .then((confirmed) => {
+            if (confirmed) {
+                $("#form-delete").attr('action', url);
+                $("#form-delete").submit();
+            }
+        });
+    }
+</script>
+
