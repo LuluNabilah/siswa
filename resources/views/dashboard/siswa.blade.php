@@ -1,4 +1,4 @@
-@extends('layouts.siswa.master')
+@extends('layouts.master')
 
 @section('content')
     Dashboard

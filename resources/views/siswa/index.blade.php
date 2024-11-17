@@ -1,5 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.master')
+@section('content')
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,7 +9,7 @@
 <body>
     <div class="container mt-5">
         <h1 class="mb-4">Daftar Siswa</h1>
-        <a href="{{ route('siswa.create') }}" class="btn btn-primary mb-3">Tambah Siswa</a>
+        <a href="#" class="btn btn-primary mb-3">Tambah Siswa</a>
         
         @if($siswa->isEmpty())
             <div class="alert alert-warning">Tidak ada data siswa.</div>
@@ -27,12 +27,12 @@
                 <tbody>
                     @foreach ($siswa as $s)
                         <tr>
-                            <td>{{ $s->nama_depan }}</td>
-                            <td>{{ $s->nama_belakang }}</td>
+                            <td><a href="/siswa/{{ $s->id }}/profile/"></a></a>{{ $s->nama_depan }}</td>
+                            <td><a href="/siswa/{{ $s->id }}/profile/"></a></a>{{ $s->nama_belakang }}</td>
                             <td>{{ $s->jenis_kelamin }}</td>
                             <td>{{ $s->agama }}</td>
                             <td>
-                                <a href="{{ route('siswa.edit', $s->id) }}" class="btn btn-warning btn-sm">Edit</a>
+                                <a href="/edit{id}/siswa" class="btn btn-warning btn-sm">Edit</a>
                                 <form action="#" method="POST" style="display:inline;">
                                     @csrf
                                     @method('DELETE')
@@ -46,4 +46,4 @@
         @endif
     </div>
 </body>
-</html>
+@endsection

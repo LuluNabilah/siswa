@@ -14,8 +14,6 @@ class Siswa extends Model
         'jenis_kelamin',
         'agama',
         'alamat',
-       
-
-        
+    
     ];
 }

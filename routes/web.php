@@ -17,5 +17,7 @@ Route::get('/dashboard/siswa', [App\Http\Controllers\DashboardSiswaController::c
 
 //tampilan siswa
 Route::get('/siswa', [App\Http\Controllers\SiswaController::class, 'index'])->name('siswa.index');
-Route::get('/siswa', [App\Http\Controllers\SiswaController::class, 'create'])->name('siswa.create');
-Route::get('/siswa', [App\Http\Controllers\SiswaController::class, 'store'])->name('siswa.store');
+//Route::get('/siswa', [App\Http\Controllers\SiswaController::class, 'create'])->name('siswa.create');
+//Route::get('/siswa', [App\Http\Controllers\SiswaController::class, 'store'])->name('siswa.store');
+
+Route::get('/profile{id}', [App\Http\Controllers\ProfileController::class, 'index'])->name('profile.index');
