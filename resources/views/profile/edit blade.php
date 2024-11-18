@@ -80,8 +80,8 @@
 									<div class="overlay"></div>
 									<div class="profile-main">
 										<img src="{{ ('admin/assets/img/login.png') }}" width="40" class="img-circle" alt="Avatar">
-										<h3 class="name">Samuel Gold</h3>
-										<span class="online-status status-available">Available</span>
+										<h3 class="name"></h3>
+										<span class="online-status status-available"></span>
 									</div>
 									<div class="profile-stat">
 										<div class="row">
@@ -101,24 +101,21 @@
 								<!-- PROFILE DETAIL -->
 								<div class="profile-detail">
 									<div class="profile-info">
-										<h2>Profile Information</h2>
+										<h3>Data Siswa</h3>
 										<div class="profile-details">
-											<p><strong>Nama Depan:</strong> </p>
-											<p><strong>Nama Belakang:</strong></p>
-											<p><strong>Email:</strong> </p>
-											<p><strong>Telepon:</strong></p>
-											<p><strong>Tanggal Lahir:</strong></p>
+											<p><strong>Email:</strong></p>
+											<tr>
+												<td>Jenis Kelamin:</td>
+												<td></td>
+											</tr>
+											<tr>
+												<td>Alamat:</td>
+												<td></td>
+											</tr>
 										</div>
-										<div class="profile-actions">
-											<a href="#" class="btn btn-primary">Edit Profile</a>
-											<form action="#" method="POST" style="display:inline;">
-												@csrf
-												@method('DELETE')
-												<button type="submit" class="btn btn-danger">Delete Profile</button>
-											</form>
-										</div>
+										<button type="submit" class="btn btn-primary mb-3">Simpan</button>
+                                        <a href="{{ route('siswa.index') }}" class="btn btn-secondary mb-3">Batal</a>
 									</div>
-									<div class="text-center"><a href="/profile{id}/edit" class="btn btn-primary">Edit Profile</a></div>
 								</div>
 								<!-- END PROFILE DETAIL -->
 							</div>

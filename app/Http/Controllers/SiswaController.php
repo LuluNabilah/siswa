@@ -10,10 +10,11 @@ class SiswaController extends Controller
 {
     public function index()
     {
-        $siswa = Siswa::all(); // Fetch all Siswa records
-       
+        $siswa = Siswa::all();
         return view('siswa.index', compact('siswa'));
     }
+
+    
 
     public function create(Request $request)
     {
@@ -21,20 +22,22 @@ class SiswaController extends Controller
     }
         
 
-    public function store(Request $request)
-    {
-        $request->validate([
-            'nama_depan' => 'required|string|max:255',
-            'nama_belakang' => 'nullable|string|max:255',
-            'email' => 'required|email|unique:siswa',
-            // Add other validation rules as necessary
-        ]);
-    
-        $siswa = $request->only(['nama_depan', 'nama_belakang', 'email']);
-        $siswa = Siswa::create($siswa);
-    
-        return redirect()->route('siswa.index')->with('success', 'Siswa created successfully.');
-    }
+    //public function store(Request $request)
+    //{
+    //    // Validasi data
+    //    $request->validate([
+    //        'nama_depan',
+    //        'nama_belakang',
+    //        'email' => 'unique:siswa,email',
+    //        // Tambahkan validasi lainnya sesuai kebutuhan
+    //    ]);
+
+    //    // Simpan data ke dalam database
+    //    Siswa::create($request->all());
+
+    //    // Redirect ke halaman daftar siswa dengan pesan sukses
+    //    return redirect()->route('siswa.index')->with('success', 'Siswa berhasil ditambahkan.');
+    //}
 
     public function edit($id)
     {
@@ -64,5 +67,13 @@ class SiswaController extends Controller
 
     $siswa->delete($id); // Now it's safe to call delete()
     return redirect($id)->route('siswa.index')->with('success', 'Siswa deleted successfully.');
-}
+    }
+
+    public function logout()
+    {
+        Auth::logout(); // Log out the user
+
+        return redirect('/'); // Redirect to the home page or any other page
+    }
+    
 }

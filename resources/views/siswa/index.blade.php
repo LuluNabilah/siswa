@@ -2,13 +2,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Index Siswa</title>
+    <title>Tambah Siswa</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
     <div class="container mt-5">
         <h1 class="mb-4">Tambah Siswa</h1>
-        <a href="#" class="btn btn-primary mb-3">Tambah Siswa</a>
+        <a href="{{ route('siswa.create') }}" class="btn btn-primary mb-3">Tambah Siswa</a>
         
         @if($siswa->isEmpty())
             <div class="alert alert-warning">Tidak ada data siswa.</div>

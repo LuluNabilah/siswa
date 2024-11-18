@@ -1,4 +1,6 @@
+@extends('layouts.master')
 
+@section('content')
 <div class="main">
     <div class="main-content">
         <div class="container-fluid">
@@ -10,12 +12,14 @@
 
                                     <a href="{{ route('siswa.index') }}" class="btn btn-sm btn-secondary mb-2">Kembali</a>
 
-                                    <form action="{{ route('siswa.store') } }}" method="POST" enctype="multipart/form-data">
+                                    <form action="{{ route('siswa.store') }}" method="POST" enctype="multipart/form-data">
                                         @csrf
-                                        
+
                                         <div class="form-group mb-2">
                                             <label for="nama_depan" class="form-label">Nama Depan<span class="text-danger">*</span></label>
                                             <input type="text" name="nama_depan" id="nama_depan" value="{{ old('nama_depan') }}" class="form-control" /> 
+
+                                           
                                         </div>
                                         
                                         <div class="form-group mb-2">
@@ -69,4 +73,5 @@
         </div>
     </div>
 </div>
-         
+                            
+@endsection
