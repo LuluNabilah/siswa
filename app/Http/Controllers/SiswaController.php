@@ -21,40 +21,34 @@ class SiswaController extends Controller
         return view('siswa.create');
     }
         
+    
+    public function store(Request $request)
+    {
+         //Validasi data
+        $request->validate([
+            'nama_depan'=>'required',
+            'email' => 'required:siswa,email',
+               // Tambahkan validasi lainnya sesuai kebutuhan
+        ]);
 
-    //public function store(Request $request)
-    //{
-    //    // Validasi data
-    //    $request->validate([
-    //        'nama_depan',
-    //        'nama_belakang',
-    //        'email' => 'unique:siswa,email',
-    //        // Tambahkan validasi lainnya sesuai kebutuhan
-    //    ]);
+        // Simpan data ke dalam database
+        Siswa::create($request->all());
 
-    //    // Simpan data ke dalam database
-    //    Siswa::create($request->all());
-
-    //    // Redirect ke halaman daftar siswa dengan pesan sukses
-    //    return redirect()->route('siswa.index')->with('success', 'Siswa berhasil ditambahkan.');
-    //}
+        // Redirect ke halaman daftar siswa dengan pesan sukses
+        return redirect()->route('siswa.index')->with('success', 'Siswa berhasil ditambahkan.');
+    }
 
     public function edit($id)
     {
-        $siswa = Siswa::find($id); //SELECT * FROM id = $id
+        $siswa = Siswa::findOrFail($id); // Find the student by ID
         return view('siswa.edit', compact('siswa'));
     }
 
     public function update(Request $request,$id)
     {
-        $request->validate([
-            'email' => 'unique:siswa,email' .$id,
-
-        ]);
-
-        $siswa = Siswa::find($id);
-        $siswa->update($request->all());
-        return redirect()->route('siswa.index');
+        $siswa = Siswa::findOrFail($id);
+        $siswa->update($request->all()); // Update the student data
+        return redirect()->route('siswa.index')->with('success', 'Data siswa berhasil diperbarui.');
     }
 
     public function destroy($id)

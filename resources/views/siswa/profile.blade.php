@@ -34,8 +34,9 @@
 				</div>
 
 				<div class="brand">
-					<a href="#">SISWAKU</a>
+					<a href="index.html">SISWAKU</a>
 				</div>
+				
 				
 				<div id="navbar-menu">
 					<ul class="nav navbar-nav navbar-right">
@@ -80,8 +81,8 @@
 									<div class="overlay"></div>
 									<div class="profile-main">
 										<img src="{{ ('admin/assets/img/login.png') }}" width="40" class="img-circle" alt="Avatar">
-										<h3 class="name"></h3>
-										<span class="online-status status-available"></span>
+										<h3 class="name">lulu</h3>
+										<span class="online-status status-available">Available</span>
 									</div>
 									<div class="profile-stat">
 										<div class="row">
@@ -101,25 +102,57 @@
 								<!-- PROFILE DETAIL -->
 								<div class="profile-detail">
 									<div class="profile-info">
-										<h3>Data Siswa</h3>
+										<h3>Siswa</h3>
 										<div class="profile-details">
 											<p><strong>Email:</strong></p>
-											<tr>
-												<td>Jenis Kelamin:</td>
-												<td></td>
-											</tr>
-											<tr>
-												<td>Alamat:</td>
-												<td></td>
-											</tr>
+											<p><strong>Jenis Kelamin:</strong></p>
+											<p><strong>Alamat:</strong></p>
 										</div>
-										<button type="submit" class="btn btn-primary mb-3">Simpan</button>
-                                        <a href="{{ route('siswa.index') }}" class="btn btn-secondary mb-3">Batal</a>
+										<div class="profile-actions">
+											<a href="/proqile/{id}/edit" class="btn btn-primary">Edit Profile</a>
+											<form action="#" method="POST" style="display:inline;">
+												@csrf
+												@method('DELETE')
+												<button type="submit" class="btn btn-danger">Delete Profile</button>
+											</form>
+										</div>
+										
 									</div>
 								</div>
 								<!-- END PROFILE DETAIL -->
 							</div>
 							<!-- END LEFT COLUMN -->
+							<!-- RIGHT COLUMN -->
+							<div class="profile-right">
+								<div class="class-panel">
+									<div class="panel-heading">
+										<h3 class="panel-title">Mata Pelajaran</h3>
+									</div>
+									<div class="panel-body">
+										<table class="table table-striped">
+											<thead>
+												<tr>
+													<th>KODE</th>
+													<th>NAMA</th>
+													<th>SEMESTER</th>
+													<th>NILAI</th>
+												</tr>
+											</thead>
+											<tbody>
+												
+												<tr>
+													<td>Matematika</td>
+													<td>50</td>
+													<td>GANJIL</td>
+													<TD>90</TD>
+												</tr>
+												
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+							<!-- END RIGHT COLUMN -->
 						</div>
 					</div>
 				</div>
@@ -130,7 +163,7 @@
 		<div class="clearfix"></div>
 		<footer>
 			<div class="container-fluid">
-				<p class="copyright">&copy; 2024 <a href="https://www.themeineed.com" target="_blank">Theme I Need</a>. All Rights Reserved.</p>
+				<p class="copyright">&copy; 2017 <a href="https://www.themeineed.com" target="_blank">Theme I Need</a>. All Rights Reserved.</p>
 			</div>
 		</footer>
 	</div>

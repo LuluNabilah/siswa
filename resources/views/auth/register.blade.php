@@ -1,12 +1,60 @@
 @extends('layouts.app')
 
 @section('content')
+
+<head>
+    <style>
+        body {
+            background-color: #2d649b; /* Warna latar belakang */
+            font-family: 'Nunito', sans-serif; /* Font yang digunakan */
+        }
+
+        .container {
+            margin-top: 80; /* Margin atas untuk memberikan ruang */
+        }
+
+        .card {
+            background-color: rgba(255, 255, 255, 0.9); /* Latar belakang kartu */
+            border-radius: 10px; /* Sudut melengkung */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Bayangan */
+        }
+
+        .card-header {
+            background-color: #007bff; /* Warna latar belakang header kartu */
+            color: white; /* Warna teks header */
+            text-align: center; /* Pusatkan teks */
+            border-top-left-radius: 7; /* Sudut melengkung kiri atas */
+            border-top-right-radius: 7; /* Sudut melengkung kanan atas */
+        }
+
+        .btn-primary {
+            background-color: #007bff; /* Warna tombol */
+            border-color: #007bff; /* Warna border tombol */
+            transition: background-color 0.3s, border-color 0.3s; /* Transisi saat hover */
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3; /* Warna tombol saat hover */
+            border-color: #0056b3; /* Warna border tombol saat hover */
+        }
+
+        .form-control {
+            border-radius: 5px; /* Sudut melengkung untuk input */
+        }
+
+        .invalid-feedback {
+            display: block; /* Tampilkan pesan kesalahan */
+        }
+    </style>
+</head>
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
-
+                <div class="logo text-center"><img src="{{ asset('admin/img/login.png') }}" width="50" alt="Klorofil Logo"></div>
+                <div class="card-header">{{ __('Silahkan Register di Bawah Ini') }}</div><br>
+            
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">
                         @csrf

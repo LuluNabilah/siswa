@@ -11,14 +11,13 @@ Route::get('/logout', [App\Http\Controllers\SiswaController::class, 'logout'])->
 
 Auth::routes();
 
-//dashboard admin dan siswa
-Route::get('/dashboard/admin', [App\Http\Controllers\DashboardAdminController::class, 'index'])->name('admin');
-Route::get('/dashboard/siswa', [App\Http\Controllers\DashboardSiswaController::class, 'index'])->name('siswa');
+//dashboard 
+Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard.index');
 
 //tampilan siswa
 Route::get('/siswa', [App\Http\Controllers\SiswaController::class, 'index'])->name('siswa.index');
 Route::get('/siswa/create', [App\Http\Controllers\SiswaController::class, 'create'])->name('siswa.create');
-//Route::get('/siswa', [App\Http\Controllers\SiswaController::class, 'store'])->name('siswa.store');
+Route::post('/siswa', [App\Http\Controllers\SiswaController::class, 'store'])->name('siswa.store');
 Route::get('/siswa/{id}/edit', [App\Http\Controllers\SiswaController::class, 'edit'])->name('siswa.edit');
 Route::put('/siswa/{id}', [App\Http\Controllers\SiswaController::class, 'update'])->name('siswa.update');
 Route::delete('/siswa/{id}', [App\Http\Controllers\SiswaController::class, 'destroy'])->name('siswa.destroy');
@@ -26,5 +25,5 @@ Route::delete('/siswa/{id}', [App\Http\Controllers\SiswaController::class, 'dest
 
 
 //profile
-Route::get('/profile/{id}',[App\Http\Controllers\ProfileController::class,'show'])->name('siswa.show');
-Route::get('/siswa/{id}/edit', [App\Http\Controllers\ProfileController::class, 'edit'])->name('siswa.edit'); 
+//Route::get('/profile/{id}',[App\Http\Controllers\ProfileController::class,'show'])->name('siswa.show');
+//Route::get('/siswa/{id}/edit', [App\Http\Controllers\ProfileController::class, 'edit'])->name('siswa.edit'); 
