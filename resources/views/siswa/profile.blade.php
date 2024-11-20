@@ -8,9 +8,9 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 	<!-- VENDOR CSS -->
-	<link rel="stylesheet" href="{{ ('admin/assets/vendor/font-awesome/css/font-awesome.min.css') }}">
-	<link rel="stylesheet" href="{{ ('admin/assets/vendor/linearicons/style.css') }}">
-	<link rel="stylesheet" href="{{ ('admin/assets/vendor/bootstrap/css/bootstrap.min.css') }}">
+	<link rel="stylesheet" href="{{ asset('admin/assets/vendor/font-awesome/css/font-awesome.min.css') }}">
+	<link rel="stylesheet" href="{{ asset('admin/assets/vendor/linearicons/style.css') }}">
+	<link rel="stylesheet" href="{{ asset('admin/assets/vendor/bootstrap/css/bootstrap.min.css') }}">
 	<!-- MAIN CSS -->
 	<link rel="stylesheet" href="assets/css/main.css">
 	<!-- FOR DEMO PURPOSES ONLY. You should remove this in your project -->
@@ -19,7 +19,7 @@
 	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet">
 	<!-- ICONS -->
 	<link rel="apple-touch-icon" sizes="76x76" href="{{ ('admin/assets/img/apple-icon.png"') }}>
-	<link rel="icon" type="image/png" sizes="96x96" href="{{ ('admin/assets/img/apple-icon.png"') }}">
+	<link rel="icon" type="image/png" sizes="96x96" href="{{ asset('admin/assets/img/apple-icon.png"') }}">
 </head>
 
 <body>
@@ -41,7 +41,7 @@
 				<div id="navbar-menu">
 					<ul class="nav navbar-nav navbar-right">
 						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="{{ ('admin/assets/img/user.png') }}" class="img-circle" alt="Avatar"> <span>Samuel</span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="{{ asset('admin/assets/img/user.png') }}" class="img-circle" alt="Avatar"> <span>{{ $siswa->nama_depan }}</span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
 							<ul class="dropdown-menu">
 								<li><a href="/profile{id}"><i class="lnr lnr-user"></i> <span>My Profile</span></a></li>
 								<li><a href="/logout"><i class="lnr lnr-exit"></i> <span>Logout</span></a></li>
@@ -80,9 +80,9 @@
 								<div class="profile-header">
 									<div class="overlay"></div>
 									<div class="profile-main">
-										<img src="{{ ('admin/assets/img/login.png') }}" width="40" class="img-circle" alt="Avatar">
-										<h3 class="name">lulu</h3>
-										<span class="online-status status-available">Available</span>
+										<img src="{{ asset('admin/assets/img/login.png') }}" width="40" class="img-circle" alt="Avatar">
+										<h3 class="name">{{ $siswa->nama_depan }}</h3>
+										<span class="online-status status-available">Online</span>
 									</div>
 									<div class="profile-stat">
 										<div class="row">
@@ -102,28 +102,23 @@
 								<!-- PROFILE DETAIL -->
 								<div class="profile-detail">
 									<div class="profile-info">
-										<h3>Siswa</h3>
-										<div class="profile-details">
-											<p><strong>Email:</strong></p>
-											<p><strong>Jenis Kelamin:</strong></p>
-											<p><strong>Alamat:</strong></p>
-										</div>
-										<div class="profile-actions">
-											<a href="/proqile/{id}/edit" class="btn btn-primary">Edit Profile</a>
-											<form action="#" method="POST" style="display:inline;">
-												@csrf
-												@method('DELETE')
-												<button type="submit" class="btn btn-danger">Delete Profile</button>
-											</form>
-										</div>
-										
+										<h4 class="heading">Data Diri</h4>
+										<ul class="list-unstyled list-justify">
+											<li>Jenis Kelamin <span>{{ $siswa->jenis_kelamin }}</span></li>
+											<li>Agama <span>{{ $siswa->agama }}</span></li>
+											<li>Alamat <span>{{ ($siswa->alamat) }}</span></li>
+										</ul>
 									</div>
+									<div class="text-center"><a href="{{ route('siswa.edit', $siswa->id) }}" class="btn btn-warning">Edit Profile</a></div>
 								</div>
 								<!-- END PROFILE DETAIL -->
 							</div>
 							<!-- END LEFT COLUMN -->
 							<!-- RIGHT COLUMN -->
 							<div class="profile-right">
+								<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+									Tambah Nilai
+								  </button>
 								<div class="class-panel">
 									<div class="panel-heading">
 										<h3 class="panel-title">Mata Pelajaran</h3>
@@ -140,17 +135,34 @@
 											</thead>
 											<tbody>
 												
-												<tr>
-													<td>Matematika</td>
-													<td>50</td>
-													<td>GANJIL</td>
-													<TD>90</TD>
-												</tr>
 												
+												<tr>
+													<td>B-11</td>
+													<td>Matematika</td>
+													<td>Ganjil</td>
+													<td>90</td>
+												</tr>
 											</tbody>
 										</table>
 									</div>
 								</div>
+								<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+									<div class="modal-dialog">
+									  <div class="modal-content">
+										<div class="modal-header">
+										  <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+										  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+										</div>
+										<div class="modal-body">
+										  ...
+										</div>
+										<div class="modal-footer">
+										  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+										  <button type="button" class="btn btn-primary">Save changes</button>
+										</div>
+									  </div>
+									</div>
+								  </div>
 							</div>
 							<!-- END RIGHT COLUMN -->
 						</div>
@@ -169,10 +181,10 @@
 	</div>
 	<!-- END WRAPPER -->
 	<!-- Javascript -->
-	<script src="{{ ('admin/assets/vendor/jquery/jquery.min.js') }}"></script>
-	<script src="{{ ('admin/assets/vendor/jquery/jquery.min.js') }}"></script>
-	<script src="{{ ('admin/assets/vendor/jquery/jquery.min.js') }}"></script>
-	<script src="{{ ('admin/assets/vendor/jquery/jquery.min.js') }}"></script>
+	<script src="{{ asset('admin/assets/vendor/jquery/jquery.min.js') }}"></script>
+	<script src="{{ asset('admin/assets/vendor/jquery/jquery.min.js') }}"></script>
+	<script src="{{ asset('admin/assets/vendor/jquery/jquery.min.js') }}"></script>
+	<script src="{{ asset('admin/assets/vendor/jquery/jquery.min.js') }}"></script>
 </body>
 
 @endsection

@@ -7,12 +7,17 @@
             <div class="row">
                 <div class="col-mb-12">
                             <div class="panel-heading">
+                                @if (session('success'))
+                                    <div class="alert alert-success">
+                                        {{ session('success') }}
+                                    </div>
+                                @endif
                                 <div class="py-4">
                                     <h3 class="fw-bold mb-2 pb-2 border-bottom">Edit Siswa</h3>
 
-                                    <a href="{{ route('siswa.index') }}" class="btn btn-sm btn-secondary mb-2">Kembali</a>
+                                    <a href="{{ route('siswa.index') }}" class="btn btn-sm btn-secondary mb-2">Kembali</a><br>
 
-                                    <form action="{{ route('siswa.update', $siswa->id) }}" method="POST">
+                                    <form action="{{ route('siswa.update', $siswa->id) }}" method="POST" enctype="multipart/form-data">
                                         @csrf
                                         @method('PUT')
 
@@ -46,8 +51,6 @@
                                         <div class="form-group mb-2">
                                             <label for="agama" class="form-label">Agama<span class="text-danger">*</span></label>
                                             <input type="text" name="agama" id="agama" value="{{ $siswa->agama}}" class="form-control" /> 
-
-                                           
                                         </div>
 
                                         <div class="form-group mb-2">
@@ -55,8 +58,7 @@
                                             <textarea name="alamat" id="alamat" class="form-control">{{ $siswa->alamat}}</textarea>
                                         </div>
 
-                                        
-                                        <button type="submit" class="btn btn-primary mb-3">Simpan</button>
+                                        <button type="submit" class="btn btn-warning mb-3">Simpan</button>
                                         <a href="{{ route('siswa.index') }}" class="btn btn-secondary mb-3">Batal</a>
                                     </form>
                                 </div>

@@ -14,7 +14,11 @@ class SiswaController extends Controller
         return view('siswa.index', compact('siswa'));
     }
 
-    
+    public function show($id)
+    {
+        $siswa = Siswa::find($id); //SELECT * FROM id = $id
+        return view('siswa.show', compact('siswa'));
+    }
 
     public function create(Request $request)
     {
@@ -53,14 +57,15 @@ class SiswaController extends Controller
 
     public function destroy($id)
     {   
-    $siswa = Siswa::find($id); // Use find to retrieve the record
-
-    if (!$siswa) {
-        return redirect()->route('siswa.index')->with('error', 'Siswa not found.'); // Handle the case where the record does not exist
+        $siswa = Siswa::find($id); // Use find to retrieve the record
+        $siswa->delete();
+        return redirect()->route('siswa.index')->with('success', 'Siswa Beerhasil dihapus.');
     }
 
-    $siswa->delete($id); // Now it's safe to call delete()
-    return redirect($id)->route('siswa.index')->with('success', 'Siswa deleted successfully.');
+    public function profile($id)
+    {
+        $siswa = Siswa::find($id);
+        return view('siswa.profile', compact('siswa'));
     }
 
     public function logout()
